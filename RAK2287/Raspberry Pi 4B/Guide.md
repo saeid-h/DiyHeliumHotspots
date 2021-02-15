@@ -48,13 +48,13 @@ sudo raspi-config
         - Select `SPI`
         - Select `Yes`
     - Select `Interfacing Options`
-        - Select `IC2`
+        - Select `I2C`
         - Select `Yes`
     - Select `Interfacing Options`
         - Select `Serial Communictioans`
         - Select `No` for shell access
         - Select `Yes` for serial port hardware
-        - Select `Yes` to confirm
+        - Select `OK` to confirm
     - Set hostname if desired
     - Save changes and reboot by selecting `Finish`
 
@@ -132,7 +132,7 @@ ssh pi@raspberrypi.local
 mkdir ~/miner_data
 ```
 
-+ Get the filename for the most recent version of the miner docker image from quay.io/team-helium/miner. Make sure to get the arm64 version for the pi. They are in the format `miner-xxxNN_YYYY.MM.DD` to the current one at the time of this document is `miner-arm64_2020.09.08.0_GA`.
++ Get the filename for the most recent version of the miner docker image from quay.io/team-helium/miner. Make sure to get the arm64 version for the pi. They are in the format `miner-xxxNN_YYYY.MM.DD` to the current one at the time of this document is `miner-arm64_2021.02.12.0_GA`. 
 
 + This docker command will download docker image and set it to always start up. Be sure to swap out `miner-xxxNN_YYYY.MM.DD.0_GA` for the current image name. Make sure that REGION_OVERRIDE variable matches your region. 
 
@@ -144,7 +144,7 @@ sudo docker run -d \
   --publish 44158:44158/tcp \
   --name miner \
   --mount type=bind,source=/home/pi/miner_data,target=/var/data \
-  quay.io/team-helium/miner:miner-xxxNN_YYYY.MM.DD.0_GA
+  quay.io/team-helium/miner:miner-arm64_2021.02.12.0_GA
 ```
 
 + Verify that your container has started
